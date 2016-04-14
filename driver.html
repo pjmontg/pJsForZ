@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Untitled Document</title>
+
+<link rel="stylesheet" href="css/styles.css"/>
+<link rel="stylesheet" href="css/jquery-css/default/jquery-ui.css"/>
+
+</head>
+
+<body>
+    <div id="loader">Loading...</div>
+    <div id="main">
+      <div id="menu-nav-div">
+     	 <ul id="primary-nav"></ul>
+      </div>
+      <div id="content"></div>
+    </div>
+</body>
+
+<script type="text/javascript" src="script/common/pipeline.common.js"></script>
+<script type="text/javascript" src="script/common/pipeline.exception.js"></script>
+<script type="text/javascript" src="script/common/pipeline.event.js"></script>
+<script type="text/javascript" src="script/base/pipeline.mediator.js"></script>
+<script type="text/javascript" src="script/base/pipeline.core.js"></script>
+<script type="text/javascript" src="script/base/pipeline.module.js"></script>
+<script type="text/javascript" src="script/ext/lib/jquery-1.6.4.min.js"></script>
+<script type="text/javascript">
+	p$.registerFile("jquery-1.6.4.min.js");
+</script>
+
+<script type="text/javascript" src="script/ext/lib/jquery-ui-1.8.13.custom.min.js"></script>
+<script type="text/javascript">
+	p$.registerFile("jquery-ui-1.8.13.custom.min.js");
+</script>
+<script type="text/javascript" src="script/ext/core/pipeline.ext.base.js"></script>
+<script type="text/javascript" src="script/ext/core/pipeline.ext.dialog.js"></script>
+<script type="text/javascript" src="script/ext/mediator/pipeline.mediator.base.js"></script>
+<script type="text/javascript" src="script/modules/pipeline.module.demo.js"></script>
+
+<script type="text/javascript">
+	$(document).ready( function() {
+		try {
+			
+			p$.core.Core.loadExtension(p$.ext.DomManipulation);
+			p$.core.Core.loadExtension(p$.ext.ViewEvent);
+			p$.core.Core.loadExtension(p$.ext.Dialog);
+			
+			p$.core.Core.registerModule("data", p$.mod.demo.DataModule, p$.med.BaseMediator, {
+			
+			});
+			
+			p$.core.Core.registerModule("main", p$.mod.demo.MainModule, p$.med.BaseMediator, {
+				loaderDiv: 'loader',
+				mainDiv: 'main'
+			});
+			
+			p$.core.Core.registerModule("menu", p$.mod.demo.MenuModule, p$.med.BaseMediator, {
+				nav: 'primary-nav'
+			});
+			
+			p$.core.Core.registerModule("content", p$.mod.demo.ContentModule, p$.med.BaseMediator, {
+				contentDiv: 'content'
+			});
+			
+			
+			
+			p$.core.Core.startAll();
+		} catch (ex) {
+			p$.error(ex.message);
+			if (ex.executeCallbackHandler !== undefined) {
+				ex.executeCallbackHandler();
+			}
+		}
+	});
+</script>
+</html>

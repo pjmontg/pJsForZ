@@ -1,0 +1,40 @@
+10
+
+dir
+771
+https://pipesvn/svn/stp/branches/ARAMCO/syntempo/webapp/styles/jquery-css
+https://pipesvn/svn/stp
+
+
+
+2011-09-19T18:45:31.482954Z
+589
+pmontgomery
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+dd248a52-b1e9-8c4c-b7c4-eb5fffe7fa86
+
+bubble-popup
+dir
+
+default
+dir
+
+smoothness
+dir
+
+tokeninput
+dir
+
